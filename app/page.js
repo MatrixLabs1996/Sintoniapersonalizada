@@ -38,7 +38,7 @@ export default function HomePage() {
 
         {/* Botão */}
         <a
-          href="https://checkout.sintonia-secreta.com/downsell"
+          href="https://pay.kirvano.com/f28ae34b-4cd7-4478-a64a-90ddf6c0dbb6"
           className="mt-8 inline-block rounded-xl px-8 py-4 font-bold text-white text-lg shadow-md transition
                      bg-pink-500 hover:bg-pink-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400"
         >
@@ -46,7 +46,7 @@ export default function HomePage() {
         </a>
 
         <p className="mt-4 text-sm text-zinc-400">
-          ✔️ Garantia de 7 dias — risco zero para você.
+          ✔️ Garantia de 30 dias — risco zero para você.
         </p>
       </section>
     </main>
