@@ -1,54 +1,33 @@
 // app/page.js
 
-import Image from "next/image";
-
 export const metadata = {
-  title: "Última Chance | Sintonia Personalizada por R$27",
+  title: "Sintonia Personalizada | VSL Exclusiva",
   description:
-    "Oferta exclusiva da Sintonia Secreta: sua chance única de ativar a Sintonia Personalizada com desconto especial.",
-  robots: { index: false, follow: false }, 
+    "Assista ao vídeo especial da Sintonia Personalizada e descubra o segredo por trás dessa frequência única.",
+  robots: { index: false, follow: false },
 };
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-zinc-900 to-black flex items-center justify-center px-6 text-white">
-      <section className="w-full max-w-2xl text-center">
-        {/* Banner */}
-        <div className="mb-6">
-          <Image
-            src="/banner backredirect SS.png"
-            alt="Oferta especial Sintonia Secreta"
-            width={1200}
-            height={600}
-            className="mx-auto rounded-xl shadow-lg"
-            priority
-          />
-        </div>
-
-        {/* Benefícios */}
-        <div className="mt-8 bg-zinc-800/80 border border-pink-500/30 rounded-2xl p-6 shadow-lg text-left">
-          <ul className="space-y-3 text-base md:text-lg">
-            <li>🔑 Reative a conexão emocional em apenas <strong>5 minutos por dia</strong></li>
-            <li>💌 Aumente as chances de receber <strong>mensagens em até 7 dias</strong></li>
-            <li>💖 Volte a se sentir <strong>desejada e confiante</strong></li>
-            <li>🌙 Sua <strong>Sintonia Personalizada</strong> é feita sob medida para o <strong>seu caso</strong></li>
-            <li>🎧 Acesso imediato ao <strong>áudio exclusivo</strong> que acelera a reconexão</li>
-          </ul>
-        </div>
-
-        {/* Botão */}
-        <a
-          href="https://pay.kirvano.com/f28ae34b-4cd7-4478-a64a-90ddf6c0dbb6"
-          className="mt-8 inline-block rounded-xl px-8 py-4 font-bold text-white text-lg shadow-md transition
-                     bg-pink-500 hover:bg-pink-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400"
-        >
-          👉 Ativar Minha Sintonia Personalizada por R$27 Agora
-        </a>
-
-        <p className="mt-4 text-sm text-zinc-400">
-          ✔️ Garantia de 30 dias — risco zero para você.
-        </p>
-      </section>
+    <main className="min-h-screen bg-black flex items-center justify-center">
+      <div className="w-full max-w-[400px] p-4">
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `
+              <vturb-smartplayer 
+                id="vid-68f1486c3ad93e6cd68376be" 
+                style="display: block; margin: 0 auto; width: 100%; max-width: 400px;">
+              </vturb-smartplayer>
+              <script type="text/javascript">
+                var s = document.createElement("script");
+                s.src = "https://scripts.converteai.net/ff253a86-28e2-448c-9671-4142ad206bd6/players/68f1486c3ad93e6cd68376be/v4/player.js";
+                s.async = true;
+                document.head.appendChild(s);
+              </script>
+            `,
+          }}
+        />
+      </div>
     </main>
   );
 }
