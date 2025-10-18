@@ -1,13 +1,39 @@
 // app/page.js
+"use client";
+
+import { useEffect } from "react";
 
 export const metadata = {
   title: "Sintonia Personalizada | VSL Exclusiva",
-  description:
-    "Assista ao vídeo especial da Sintonia Personalizada e descubra o segredo por trás dessa frequência única.",
+  description: "Assista ao vídeo especial e descubra como liberar sua Sintonia Personalizada.",
   robots: { index: false, follow: false },
 };
 
 export default function HomePage() {
+  useEffect(() => {
+    const checkoutURL = "https://pay.kirvano.com/f28ae34b-4cd7-4478-a64a-90ddf6c0dbb6";
+
+    // Redireciona quando o usuário clica no botão "voltar"
+    const onPopState = () => (window.location.href = checkoutURL);
+    window.history.pushState(null, "", window.location.href);
+    window.addEventListener("popstate", onPopState);
+
+    // Redireciona em sinais de saída (desktop): mouse saindo pelo topo ou perda de foco
+    const onExit = (e) => {
+      if ((e && e.clientY <= 0) || document.hidden) {
+        window.location.href = checkoutURL;
+      }
+    };
+    document.addEventListener("mouseleave", onExit);
+    document.addEventListener("visibilitychange", onExit);
+
+    return () => {
+      window.removeEventListener("popstate", onPopState);
+      document.removeEventListener("mouseleave", onExit);
+      document.removeEventListener("visibilitychange", onExit);
+    };
+  }, []);
+
   return (
     <main className="min-h-screen bg-black flex items-center justify-center">
       <div className="w-full max-w-[400px] p-4">
