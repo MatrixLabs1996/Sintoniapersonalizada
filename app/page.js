@@ -1,4 +1,3 @@
-// app/page.js
 "use client";
 
 import { useEffect } from "react";
@@ -13,24 +12,32 @@ export default function HomePage() {
   useEffect(() => {
     const checkoutURL = "https://pay.kirvano.com/f28ae34b-4cd7-4478-a64a-90ddf6c0dbb6";
 
-    // Redireciona quando o usuário clica no botão "voltar"
-    const onPopState = () => (window.location.href = checkoutURL);
+    // Redireciona quando clicar no botão "voltar" (desktop e mobile)
+    const handlePopState = () => {
+      window.location.href = checkoutURL;
+    };
     window.history.pushState(null, "", window.location.href);
-    window.addEventListener("popstate", onPopState);
+    window.addEventListener("popstate", handlePopState);
 
-    // Redireciona em sinais de saída (desktop): mouse saindo pelo topo ou perda de foco
-    const onExit = (e) => {
-      if ((e && e.clientY <= 0) || document.hidden) {
+    // Redireciona quando o usuário fecha a aba, troca de aba ou minimiza (mobile e desktop)
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
         window.location.href = checkoutURL;
       }
     };
-    document.addEventListener("mouseleave", onExit);
-    document.addEventListener("visibilitychange", onExit);
+
+    // Redireciona se a aba perde o foco (ex: troca de app no mobile)
+    const handleBlur = () => {
+      window.location.href = checkoutURL;
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("blur", handleBlur);
 
     return () => {
-      window.removeEventListener("popstate", onPopState);
-      document.removeEventListener("mouseleave", onExit);
-      document.removeEventListener("visibilitychange", onExit);
+      window.removeEventListener("popstate", handlePopState);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("blur", handleBlur);
     };
   }, []);
 
